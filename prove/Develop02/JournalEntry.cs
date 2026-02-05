@@ -1,19 +1,39 @@
 public class JournalEntry()
 {
     public string _input;
-    public string _date;
 
-    public void GetInput()
+    
+
+
+
+    public void NewEntry()
     {
-
-    }
-
-    public void GetPrompt()
-    {
+        GetPrompt();
+        _input = GetInput();
         
+
     }
 
-    public void GetDate()
+
+
+
+    public string GetInput()
+    {
+        string x;
+        string _date = GetDate();
+        Console.Write($"{_date}: ");
+        x = Console.ReadLine();
+        return x;
+    }
+
+    public string GetPrompt()
+    {
+        string prompt;
+        Console.WriteLine(prompt);
+
+    }
+
+    public string GetDate()
     {
         
     }
