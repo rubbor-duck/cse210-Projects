@@ -23,7 +23,7 @@ namespace SodFarm
 
         // TODO: create class members for length and width
         public double length;
-        public double width;newplot
+        public double width;
 
         // TODO: create a method for calculating area
 
