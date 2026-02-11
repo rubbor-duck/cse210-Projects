@@ -1,9 +1,13 @@
-using System;
+Fraction test1 = new Fraction();
+Console.WriteLine(test1.GetFractionString());
+Console.WriteLine(test1.GetDecimalValue());
 
-class Program
+Fraction randomFraction = new Fraction();
+Random random = new Random();
+
+for (int i = 0; i<20; ++i)
 {
-    static void Main(string[] args)
-    {
-        Console.WriteLine("Hello Learning03 World!");
-    }
+    randomFraction.SetTop(random.Next());
+    randomFraction.SetBottom(random.Next());
+    Console.WriteLine($"Fraction {i}: String: {randomFraction.GetFractionString()} Number: {randomFraction.GetDecimalValue()}");
 }
