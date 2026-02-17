@@ -1,9 +1,33 @@
-using System;
-
-class Program
+static void main()
 {
-    static void Main(string[] args)
+    string input = null;
+    
+    Scritpure scritpure = new Scritpure();
+
+    Reference reference = new Reference();
+
+    Console.WriteLine($"{reference}: {scritpure.GetScripture}");
+
+    Console.WriteLine($"Press enter to hide a word, or type 'quit' to exit the program");
+
+    while ((input != "quit") && (scritpure.IsCompletelyHidden() == false))
     {
-        Console.WriteLine("Hello Develop03 World!");
+        input = Console.ReadLine();
+
+        if (input == "")
+        {
+            scritpure.SelectRandomHidden();
+            scritpure.GetScripture();
+        }
+
+        else if (input == "quit")
+        {
+            continue;
+        }
+
+        else
+        {
+            Console.WriteLine("Please press enter to hide a word");
+        }
     }
 }
