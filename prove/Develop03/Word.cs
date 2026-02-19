@@ -13,6 +13,11 @@ public class Word
         _isHidden = false;
     }
 
+    public void SetWord(string word)
+    {
+        _text = word;
+    }
+
     public string GetWord()
     {
         string text = _text;

@@ -6,11 +6,22 @@ class Scritpure
     private List<Word> _scritpure = new List<Word>();
     private int _random;
     private List<int> _usedRandom = new List<int>();
+    private Reference reference1 = new Reference();
 
     public Scritpure(){}
 
-    public Scritpure(string verse)
+    public Scritpure(string reference, string verse)
     {
+         string[] words = verse.Split(" ");
+         
+         foreach (string word in words)
+            {
+                
+                
+                
+            }
+
+         reference1.SetReference(reference);
          
     }
 
@@ -32,7 +43,7 @@ class Scritpure
             }
         } 
 
-        Console.WriteLine(verse);
+        Console.WriteLine($"{reference1}: {verse}");
     }
 
     public void SelectRandomHidden()

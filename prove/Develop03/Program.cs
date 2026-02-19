@@ -1,5 +1,3 @@
-static void main()
-{
     string input = null;
     
     Scritpure scritpure = new Scritpure();
@@ -30,4 +28,3 @@ static void main()
             Console.WriteLine("Please press enter to hide a word");
         }
     }
-}
