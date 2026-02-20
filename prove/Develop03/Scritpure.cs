@@ -10,22 +10,31 @@ class Scritpure
 
     public Scritpure(){}
 
-    public Scritpure(string reference, string verse)
+    public Scritpure(string verse)
     {
          string[] words = verse.Split(" ");
          
-         foreach (string word in words)
-            {
-                
-                
-                
-            }
-
-         reference1.SetReference(reference);
+         foreach (string x in words)
+        {
+            Word newer = new Word(x);
+            _scritpure.Add(newer);
+        }
          
     }
 
-    public void GetScripture()
+    public void SetScripture(string verse)
+    {
+         string[] words = verse.Split(" ");
+         
+         foreach (string x in words)
+        {
+            Word newer = new Word(x);
+            _scritpure.Add(newer);
+        }
+         
+    }
+
+    public string GetScripture()
     {
         string verse = null;
         foreach (Word word in _scritpure)
@@ -43,7 +52,7 @@ class Scritpure
             }
         } 
 
-        Console.WriteLine($"{reference1}: {verse}");
+        return verse;
     }
 
     public void SelectRandomHidden()
