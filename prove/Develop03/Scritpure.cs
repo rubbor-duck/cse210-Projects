@@ -8,8 +8,10 @@ class Scritpure
     private List<int> _usedRandom = new List<int>();
     private Reference reference1 = new Reference();
 
+    // blank constructor for the class
     public Scritpure(){}
 
+    // verse constructor to set up the verse into a list
     public Scritpure(string verse)
     {
          string[] words = verse.Split(" ");
@@ -22,6 +24,7 @@ class Scritpure
          
     }
 
+    // sets the _scritpure, similar to the verse constructor
     public void SetScripture(string verse)
     {
          string[] words = verse.Split(" ");
@@ -34,6 +37,7 @@ class Scritpure
          
     }
 
+    // displays the _scritpure, hidding words that have the hidden tag checked
     public string GetScripture()
     {
         string verse = null;
@@ -55,6 +59,7 @@ class Scritpure
         return verse;
     }
 
+    // randomly selects a word to be hidden, skipping over those that have already had the hidden tag checked off
     public void SelectRandomHidden()
     {
         Random random = new Random();
@@ -81,12 +86,14 @@ class Scritpure
        
     }
 
+    // an internal function that counts the total words in a verse
     public int TotalWords()
     {
         int textamount = _scritpure.Count();
         return textamount;
     }
 
+    // checks if the verse is completely hidden
     public bool IsCompletelyHidden()
     {
         foreach (Word word in _scritpure)
