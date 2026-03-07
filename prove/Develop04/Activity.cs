@@ -70,9 +70,8 @@ public class Activity
         }
         }
     }
-
-    // Pause Animation takes 1 second to cycle through
-    public void PauseAnimation()
+    
+    public void PauseAnimation() // Pause Animation takes 1 second to cycle through
     {
         Console.Write("|");
 
@@ -100,7 +99,7 @@ public class Activity
     {
         // starting code for all activities. Shows the activty name, description, and asks for duration.
         Console.WriteLine($"{GetActivityName()}: {GetDescription()}");
-        Console.Write("How long do you want to do this activity for in seconds: ");
+        Console.Write("How long do you want to do this activity for (in seconds): ");
         SetDuration(int.Parse(Console.ReadLine()));
     }
 }

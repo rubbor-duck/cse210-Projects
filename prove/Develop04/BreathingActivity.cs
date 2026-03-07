@@ -15,6 +15,8 @@ public class BreathingActivity : Activity
     {
         base.Start();
 
+        Console.Clear();
+
         for (int i = GetDuration(); i>0; i-=10)
         {
             Console.WriteLine("Breathe in...");
