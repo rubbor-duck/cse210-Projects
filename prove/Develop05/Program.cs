@@ -1,9 +1,39 @@
-using System;
+using System.Xml.Linq;
 
-class Program
+int x = -1;
+
+while (x != 0)
 {
-    static void Main(string[] args)
+    Console.WriteLine("1. New Simple Goal\n2. New Eternal Goal\n3. New Checklist Goal\n4. Save to file\n5. Load from file");
+    Console.Write("Please choose a selection: ");
+    switch (x)
     {
-        Console.WriteLine("Hello Develop05 World!");
+        case 1:
+            SimpleGoals;
+            break;
+
+        case 2:
+            EternalGoals;
+            break;
+
+        case 3:
+            ChecklistGoals;
+            break;
+
+        case 4:
+            "Save to File";
+            break;
+
+        case 5:
+            "Load to File";
+            break;
+
+        case 0:
+        // exits the program
+            break;
+        
     }
+    
+
+
 }
