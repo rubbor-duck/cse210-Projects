@@ -5,9 +5,21 @@ public class SimpleGoals : Goals
 
     }
 
+    public SimpleGoals(string name, string description, int points, bool completed) : base(name, description, points, completed)
+    {
+
+    }
+
     public override void RecordEvent()
     {
         _complete = true;
+    }
+
+    public override string GetStringRepresentation()
+    {
+       string stringrep = $"SimpleGoals:{GetName}:{GetDescription}:{_points}:{_complete}";
+
+        return stringrep;
     }
 
 }

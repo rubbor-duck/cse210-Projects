@@ -10,14 +10,21 @@ public class EternalGoals : Goals
         
     }
 
+    public EternalGoals(string name, string description, int points, bool completed, int timesCompleted) : base(name, description, points, completed)
+    {
+        _timesCompleted = timesCompleted;
+        
+    }
+
+
     public override void RecordEvent()
     {
         _timesCompleted += 1;
     }
 
-    public int TotalPoints()
+    public override int GetPoints()
     {
-        int total = GetPoints() * _timesCompleted;
+        int total = _points * _timesCompleted;
         return total;
     }
 
@@ -26,6 +33,10 @@ public class EternalGoals : Goals
         return _timesCompleted;
     }
 
-    
+    public override string GetStringRepresentation()
+    {
+        string stringrep = $"Goal:{GetName}:{GetDescription}:{_points}:{_complete}:{_timesCompleted}";
 
+        return stringrep;
+    }
 }
