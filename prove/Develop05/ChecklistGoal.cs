@@ -6,6 +6,7 @@ public class ChecklistGoal : Goals
     private int _completedPoints;
     private int _numberDone;
 
+    // constructors
     public ChecklistGoal(string name, string description, int points, int listLength, int completedPoints) : base(name, description, points)
     {
         _numberDone = 0;
@@ -20,20 +21,25 @@ public class ChecklistGoal : Goals
         _completedPoints = completedPoints;
     }
 
+    // Updates the completeness of the goal
     public override void RecordEvent()
     {
         _numberDone += 1;
         
+        // if the number of parts done is the same as the total number of parts in the goal, then update the _complete attribute
         if (_numberDone == _listLength)
         {
             _complete = true;
         }
     }
 
+    // gets the total points earned from the goal so far
      public override int GetPoints()
     {
+        // points for completing each part
         int total = _points * _numberDone;
 
+        // extra points if the goal was fully completed
         if (_complete == true)
         {
             total += _completedPoints;
@@ -41,12 +47,7 @@ public class ChecklistGoal : Goals
         return total;
     }
 
-    public double GetPercentDone()
-    {
-        double percent = _numberDone/_listLength;
-        return percent;
-    }
-
+    // Converts attributes into a single string for storing in a txt file
     public override string GetStringRepresentation()
     {
         string stringrep = $"CheckListGoal:{GetName()}:{GetDescription()}:{_points}:{IsComplete()}:{_listLength}:{_completedPoints}:{_numberDone}";
@@ -54,6 +55,7 @@ public class ChecklistGoal : Goals
         return stringrep;
     }
 
+    // converts the attributes into a nice format to be displayed to the user
     public override string DisplayStringDetails()
     {
         string checkbox;

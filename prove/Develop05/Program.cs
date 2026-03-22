@@ -21,6 +21,7 @@ class Program {
             Console.Clear();
             switch (selection)
             {
+                // Creates a new simple goal
                 case 1:
                     Console.Write("What name do you want: ");
                     name = Console.ReadLine();
@@ -36,6 +37,7 @@ class Program {
                     goals.Add(simple);
                     break;
 
+                // Creates a new eternal goal
                 case 2:
                     Console.Write("What name do you want: ");
                     name = Console.ReadLine();
@@ -51,6 +53,7 @@ class Program {
                     goals.Add(eternal);
                     break;
 
+                // Creates a new checklist goal
                 case 3:
                     Console.Write("What name do you want: ");
                     name = Console.ReadLine();
@@ -72,6 +75,7 @@ class Program {
                     goals.Add(checklist);
                     break;
 
+                // Updates the complete objet of a goal
                 case 4:
                     Console.Write("What goal do you want to update: ");
                     string goalname = Console.ReadLine();
@@ -93,6 +97,7 @@ class Program {
 
                     break;
 
+                // Gets the total score of all the goals
                 case 5:
                     int totalscore = 0;
                     
@@ -106,6 +111,7 @@ class Program {
                     Console.WriteLine($"Your total score is {totalscore}");
                     break;
 
+                // Shows all the goals in the goals list
                 case 6:
                     Console.WriteLine("");
                     foreach (Goals goal_list in goals)
@@ -115,22 +121,26 @@ class Program {
                         Console.WriteLine("");
                     }
                     break;
-
+                
+                // Saves the goals list to a file
                 case 7:
                     Save(goals);
                     break;
 
+                // Loads goals from a file
                 case 8:
                     goals.Clear();
                     Load(goals);
                     break;
 
+                // Exits the program
                 case 0:
                 // exits the program
                     break;
 
             }
-
+            
+            // extra space to make the ui look nice
             Console.WriteLine();
         }
     }
@@ -169,23 +179,28 @@ class Program {
         Console.Write("What file would you like to load from? ");
         fileName = Console.ReadLine();
 
+        // creates an array of all the lines of the file
         string[] lines = System.IO.File.ReadAllLines(fileName);
         string[] parts = null;
 
+        // goes through each line and breaks the lines down into individual strings
         foreach (string line in lines)
         {
             if (string.IsNullOrWhiteSpace(line))
             {
                 continue;
             }
+            // splits the string by ":"
             parts = line.Split(":");
             
+            // line split up into its different values
             string goaltype = parts[0];
             string name = parts[1];
             string description = parts[2];
             int points = int.Parse(parts[3]);
             bool completed = bool.Parse(parts[4]);
 
+            // checks the goal type, then loads the attributes into a new goal that gets added to the overarching goal list
             if (goaltype == "SimpleGoals")
             {
                 SimpleGoals simple = new SimpleGoals(name, description, points, completed);
