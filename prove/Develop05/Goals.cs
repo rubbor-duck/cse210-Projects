@@ -1,4 +1,5 @@
 using System.Reflection.PortableExecutable;
+using System.Runtime.InteropServices.Marshalling;
 
 public abstract class Goals
 {
@@ -22,7 +23,7 @@ public abstract class Goals
         _points = points;
         _complete = completed;
     }
-    
+
     public virtual void RecordEvent()
     {
         _complete = true;
@@ -60,4 +61,21 @@ public abstract class Goals
         return stringrep;
     }
 
+    public virtual string DisplayStringDetails()
+    {
+        string checkbox;
+
+        if (IsComplete() == true)
+        {
+            checkbox = "[x]";
+        }
+
+        else
+        {
+            checkbox = "[_]";
+        }
+        string details = $"Name: {GetName()}\nDescription: {GetDescription()}\n# of points worth: {_points}\nIs it complete: {checkbox}";
+
+        return details;
+    }
 }

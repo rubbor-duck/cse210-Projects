@@ -35,8 +35,27 @@ public class EternalGoals : Goals
 
     public override string GetStringRepresentation()
     {
-        string stringrep = $"Goal:{GetName}:{GetDescription}:{_points}:{_complete}:{_timesCompleted}";
+        string stringrep = $"EternalGoals:{GetName()}:{GetDescription()}:{_points}:{_complete}:{_timesCompleted}";
 
         return stringrep;
+    }
+
+    public override string DisplayStringDetails()
+    {
+        string checkbox;
+
+        if (IsComplete() == true)
+        {
+            checkbox = "[x]";
+        }
+
+        else
+        {
+            checkbox = "[_]";
+        }
+
+        string details = $"Name: {GetName()}\nDescription: {GetDescription()}\n# of points worth: {GetPoints()}\nHas been completed {_timesCompleted} times";
+
+        return details;
     }
 }

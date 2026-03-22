@@ -15,9 +15,22 @@ public class SimpleGoals : Goals
         _complete = true;
     }
 
+    public override int GetPoints()
+    {
+        if (_complete == true)
+        {
+            return _points;    
+        }
+
+        else
+        {
+            return 0;
+        }
+    }
+
     public override string GetStringRepresentation()
     {
-       string stringrep = $"SimpleGoals:{GetName}:{GetDescription}:{_points}:{_complete}";
+       string stringrep = $"SimpleGoals:{GetName()}:{GetDescription()}:{_points}:{_complete}";
 
         return stringrep;
     }

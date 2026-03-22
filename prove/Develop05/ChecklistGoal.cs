@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 public class ChecklistGoal : Goals
 {
     private int _listLength;
@@ -47,8 +49,27 @@ public class ChecklistGoal : Goals
 
     public override string GetStringRepresentation()
     {
-        string stringrep = $"CheckListGoal:{GetName}:{GetDescription}:{_points}:{IsComplete}:{_listLength}:{_completedPoints}:{_numberDone}";
+        string stringrep = $"CheckListGoal:{GetName()}:{GetDescription()}:{_points}:{IsComplete()}:{_listLength}:{_completedPoints}:{_numberDone}";
 
         return stringrep;
+    }
+
+    public override string DisplayStringDetails()
+    {
+        string checkbox;
+
+        if (IsComplete() == true)
+        {
+            checkbox = "[x]";
+        }
+
+        else
+        {
+            checkbox = "[_]";
+        }
+        
+        string details = $"Name: {GetName()}\nDescription: {GetDescription()}\n# of points worth: {GetPoints()}\nIs it complete: {checkbox}\n{_numberDone}/{_listLength} has been completed\nYou will get {_completedPoints} points when the goal is fully completed";
+
+        return details;
     }
 }

@@ -13,8 +13,12 @@ class Program {
 
         while (selection != 0)
         {
+            Console.WriteLine("-------- Goals Program --------");
             Console.WriteLine("1. New Simple Goal\n2. New Eternal Goal\n3. New Checklist Goal\n4. Update a Goal\n5. Get total score\n6. Show All Goals\n7. Save to file\n8. Load from file\n0. Exit the program");
             Console.Write("Please choose a selection: ");
+            selection = int.Parse(Console.ReadLine());
+
+            Console.Clear();
             switch (selection)
             {
                 case 1:
@@ -80,13 +84,20 @@ class Program {
                             Console.WriteLine("Goal has been updated");
                             break;
                         }
+
+                        else
+                        {
+                            continue;
+                        }
                     }
-                    Console.WriteLine("Sorry, there wasn't a goal called that.");
+
                     break;
 
                 case 5:
                     int totalscore = 0;
-
+                    
+                    Console.WriteLine("");
+                    
                     foreach (Goals goals_point in goals)
                     {
                         totalscore += goals_point.GetPoints();
@@ -96,27 +107,12 @@ class Program {
                     break;
 
                 case 6:
+                    Console.WriteLine("");
                     foreach (Goals goal_list in goals)
                     {
-                        Console.WriteLine($"Name: {goal_list.GetName()}");
-                        Console.WriteLine($"Description: {goal_list.GetDescription()}");
-                        Console.WriteLine($"Points it is worth: {goal_list.GetPoints}");
-                        Console.WriteLine($"{goal_list.IsComplete}");
+                        Console.WriteLine(goal_list.DisplayStringDetails());
 
-                        if (goal_list.GetType() == typeof(SimpleGoals))
-                        {
-                            
-                        }
-
-                        else if (goal_list.GetType() == typeof(EternalGoals))
-                        {
-                            
-                        }
-
-                        else if (goal_list.GetType() == typeof(ChecklistGoal))
-                        {
-                            
-                        }
+                        Console.WriteLine("");
                     }
                     break;
 
@@ -132,8 +128,10 @@ class Program {
                 case 0:
                 // exits the program
                     break;
-        
+
             }
+
+            Console.WriteLine();
         }
     }
 
@@ -172,11 +170,16 @@ class Program {
         fileName = Console.ReadLine();
 
         string[] lines = System.IO.File.ReadAllLines(fileName);
+        string[] parts = null;
 
         foreach (string line in lines)
         {
-            string[] parts = line.Split(":");
-
+            if (string.IsNullOrWhiteSpace(line))
+            {
+                continue;
+            }
+            parts = line.Split(":");
+            
             string goaltype = parts[0];
             string name = parts[1];
             string description = parts[2];
