@@ -28,11 +28,17 @@ public class ElectricSedan : Vehicle
         }
     }
 
+    public override void EngineStartMessage()
+    {
+        Console.WriteLine("You hear the quite hum of the fans turn on.");
+        Console.WriteLine($"{GetName} has quitely started, ready to be eco friendly 🤮");
+    }
+
     public override void StartEngine()
     {
         base.StartEngine();
-        Console.WriteLine("You hear the quite hum of the fans turn on.");
-        Console.WriteLine($"{GetName} has quitely started, ready to be eco friendly 🤮");
+
+        EngineStartMessage();
     }
 
 }

@@ -12,6 +12,9 @@ public class SemiTruck : Vehicle
         return _trailer;
     }
 
-    
-
+    public override void EngineStartMessage()
+    {
+        Console.WriteLine("Rabababababababababababa");
+        Console.WriteLine($"{GetName()} rumbles to life");
+    }
 }

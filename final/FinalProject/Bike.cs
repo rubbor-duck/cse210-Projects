@@ -12,6 +12,13 @@ public class Bike : Vehicle
         SetFuel(fuel);
     }
 
+    public override void EngineStartMessage()
+    {
+        Console.WriteLine("*crickets*");
+        Console.WriteLine($"{GetName()} has been started, if you can call hopping on the bike starting it.");
+
+    }
+
     public override void StartEngine()
     {
         Console.WriteLine("Cyclist turns on helmet flashlight.");
@@ -22,7 +29,7 @@ public class Bike : Vehicle
             Console.WriteLine("The cyclist is too tired to bike. He need some food/rest :(");
             return;
         }
-        Console.WriteLine("*crickets*");
-        Console.WriteLine($"{GetName()} has been started, if you can call hopping on the bike starting it.");
+
+        EngineStartMessage();
     }
 }

@@ -13,10 +13,16 @@ public class SportsCar : Vehicle
 
     }
 
-    public override void StartEngine()
+    public override void EngineStartMessage()
     {
-        base.StartEngine();
         Console.WriteLine("Vroooom!!!");
         Console.WriteLine($"{GetName()} has been started");
+    }
+
+    public override void StartEngine()
+    {
+        TurnOnLights();
+
+        EngineStartMessage();
     }
 }

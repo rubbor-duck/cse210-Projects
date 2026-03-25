@@ -12,16 +12,17 @@ public class Truck : Vehicle
         return _bedCapacity;
     }
 
-    public override void ReFuel(double fuel)
+    public override void EngineStartMessage()
     {
-        base.ReFuel(fuel);
+        Console.WriteLine("Rummmmmmmmmmmmmmmmm");
+        Console.WriteLine($"{GetName()} has roared to life");
     }
 
     public override void StartEngine()
     {
         base.StartEngine();
-        Console.WriteLine("Rummmmmmmmmmmmmmmmm");
-        Console.WriteLine($"{GetName()} has roared to life");
+
+        EngineStartMessage();
     }
 
 }

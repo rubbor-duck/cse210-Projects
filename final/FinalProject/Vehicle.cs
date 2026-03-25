@@ -98,6 +98,12 @@ public abstract class Vehicle
         Console.WriteLine("Lights have been turned off");
     }
 
+    public virtual void EngineStartMessage()
+    {
+        Console.WriteLine("Vroom");
+        Console.WriteLine($"{_name} has fired up");
+    }
+
     public virtual void StartEngine()
     {
         TurnOnLights();
@@ -108,7 +114,6 @@ public abstract class Vehicle
             return;
         }
 
-        Console.WriteLine("Vroom");
-        Console.WriteLine($"{_name} has fired up");
+        EngineStartMessage();
     }
 }
