@@ -4,4 +4,11 @@ public class Sedan : Vehicle
     {
         
     }
+
+    public override string GetStringRepresentation()
+    {
+        string stringrep = $"Sedan: {GetName()}:{GetDescription()}:{GetYear()}:{GetCost()}:{GetOdometer()}:{GetFuelCapacity()}:{GetFuel()}";
+
+        return stringrep;
+    }
 }

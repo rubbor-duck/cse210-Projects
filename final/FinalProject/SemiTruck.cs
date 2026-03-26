@@ -17,4 +17,11 @@ public class SemiTruck : Vehicle
         Console.WriteLine("Rabababababababababababa");
         Console.WriteLine($"{GetName()} rumbles to life");
     }
+
+    public override string GetStringRepresentation()
+    {
+        string stringrep = $"SemiTruck: {GetName()}:{GetDescription()}:{GetYear()}:{GetCost()}:{GetOdometer()}:{GetFuelCapacity()}:{GetFuel()}:{_trailer}";
+
+        return stringrep;
+    }
 }

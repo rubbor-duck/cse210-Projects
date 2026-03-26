@@ -32,4 +32,11 @@ public class Bike : Vehicle
 
         EngineStartMessage();
     }
+
+    public override string GetStringRepresentation()
+    {
+        string stringrep = $"Bike: {GetName()}:{GetDescription()}:{GetYear()}:{GetCost()}:{GetOdometer()}:{GetFuelCapacity()}:{GetFuel()}";
+
+        return stringrep;
+    }
 }

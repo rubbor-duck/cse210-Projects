@@ -25,4 +25,11 @@ public class Truck : Vehicle
         EngineStartMessage();
     }
 
+    public override string GetStringRepresentation()
+    {
+        string stringrep = $"Truck: {GetName()}:{GetDescription()}:{GetYear()}:{GetCost()}:{GetOdometer()}:{GetFuelCapacity()}:{GetFuel()}:{_bedCapacity}";
+
+        return stringrep;
+    }
+
 }

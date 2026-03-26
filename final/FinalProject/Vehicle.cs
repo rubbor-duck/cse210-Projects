@@ -116,4 +116,11 @@ public abstract class Vehicle
 
         EngineStartMessage();
     }
+
+    public virtual string GetStringRepresentation()
+    {
+        string stringrep = $"Vehicle: {_name}:{_description}:{_year}:{_cost}:{_odometer}:{_fuelCapacity}:{_fuelRemaning}";
+
+        return stringrep;
+    }
 }

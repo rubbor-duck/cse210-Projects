@@ -41,4 +41,10 @@ public class ElectricSedan : Vehicle
         EngineStartMessage();
     }
 
+    public override string GetStringRepresentation()
+    {
+        string stringrep = $"ElectricSedan: {GetName()}:{GetDescription()}:{GetYear()}:{GetCost()}:{GetOdometer()}:{GetFuelCapacity()}:{GetFuel()}:{_batteryHealth}";
+
+        return stringrep;
+    }
 }

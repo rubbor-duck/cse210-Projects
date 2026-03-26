@@ -25,4 +25,11 @@ public class SportsCar : Vehicle
 
         EngineStartMessage();
     }
+
+    public override string GetStringRepresentation()
+    {
+        string stringrep = $"SportsCar: {GetName()}:{GetDescription()}:{GetYear()}:{GetCost()}:{GetOdometer()}:{GetFuelCapacity()}:{GetFuel()}";
+
+        return stringrep;
+    }
 }
