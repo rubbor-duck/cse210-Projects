@@ -28,7 +28,7 @@ public class SportsCar : Vehicle
 
     public override string GetStringRepresentation()
     {
-        string stringrep = $"SportsCar: {GetName()}:{GetDescription()}:{GetYear()}:{GetCost()}:{GetOdometer()}:{GetFuelCapacity()}:{GetFuel()}";
+        string stringrep = $"SportsCar:{GetName()}:{GetDescription()}:{GetYear()}:{GetCost()}:{GetOdometer()}:{GetFuelCapacity()}:{GetFuel()}";
 
         return stringrep;
     }

@@ -3,85 +3,148 @@ using System.Runtime.InteropServices;
 
 class Program
 {
-   
-
     static void Main(string[] args)
     {
-        List<Vehicle> vehicles = new List<Vehicle>();
-        int selection = -1;
+        List<Vehicle> vehicles = new List<Vehicle>();   // master list for the vehicles
+        int selection = -1;     // variable for the switch function
+        int error = 0;          // error flag
 
-        Console.WriteLine("ō͡≡o˞ Vehicle Manager ō͡≡o˞");
-        Console.WriteLine("1. Save File\n2. Load File\n3. New Vehicle\n4. Refuel Vehicle\n5. Start Vehicle\n6. Vehicle Details");
+        while (selection != 0)
         {
+            // main menu
+            Console.Clear();
+            Console.WriteLine("ō͡≡o˞ Vehicle Manager ō͡≡o˞");
+            Console.WriteLine("1. Save Vehicle List\n2. Load Vehicle List\n3. New Vehicle\n4. Refuel Vehicle\n5. Start Vehicle\n6. Vehicle Details\n0. Exit");
 
-            switch(selection)
+            Console.Write("Selection: ");
+            selection = int.Parse(Console.ReadLine());
             {
-                case 1:
-                Save(vehicles);
-                break;
 
-
-                case 2:
-                vehicles.Clear();
-                Load(vehicles);
-                break;
-
-                // new vehicle
-                case 3:
-                NewVehicle(vehicles);
-                break;
-                
-                // refuel vehicle
-                case 4:
-                Console.Write("What Vehicle do you want to refull: ");
-                string vehicle_selection = Console.ReadLine();
-
-                foreach (Vehicle vehicle in vehicles)
-                    {
-                        if (vehicle.GetName() == vehicle_selection)
-                        {
-                            Console.Write("How much fuel do you want to put in: ");
-                            double fuel = double.Parse(Console.ReadLine());
-
-                            vehicle.ReFuel(fuel);
-                        }
-
-                        else
-                        {
-                            continue;
-                        }
-                    }
-                break;
-
-                // start vehicle
-                case 5:
-
+                switch(selection)
                 {
-                Console.Write("What Vehicle do you want to refull: ");
-                vehicle_selection = Console.ReadLine();
+                    // Save to File
+                    case 1:
+                    Save(vehicles);
+                    break;
 
-                foreach (Vehicle vehicle in vehicles)
+                    // Load from File
+                    case 2:
+                    vehicles.Clear();
+                    Load(vehicles);
+                    break;
+
+                    // New vehicle
+                    case 3:
+                    NewVehicle(vehicles);
+                    break;
+                    
+                    // Refuel vehicle
+                    case 4:
+                    Console.Write("What Vehicle do you want to refull: ");
+                    string vehicle_selection = Console.ReadLine();
+                    error = 0;
+
+                    foreach (Vehicle vehicle in vehicles)
+                        {
+                            if (vehicle.GetName() == vehicle_selection)
+                            {
+                                Console.Write("How much fuel do you want to put in: ");
+                                double fuel = double.Parse(Console.ReadLine());
+                                error = 1;
+
+                                vehicle.ReFuel(fuel);
+                                Console.WriteLine("Press enter to go back to the main menu");
+                                Console.ReadLine();
+
+                            }
+
+                            else
+                            {
+                                continue;
+                            }
+                        }
+
+                        // If vehicle could not be found
+                        if (error != 1)
+                        {
+                            Console.Write($"Could not find a vehicle name '{vehicle_selection}'");
+                            Console.WriteLine("Press enter to go back to the main menu");
+                            Console.ReadLine();
+                        }
+                        
+                    break;
+
+                    // Start vehicle
+                    case 5:
+
                     {
-                        if (vehicle.GetName() == vehicle_selection)
+                    Console.Write("What Vehicle do you want to start: ");
+                    vehicle_selection = Console.ReadLine();
+
+                    error = 0;
+                    foreach (Vehicle vehicle in vehicles)
                         {
-                            vehicle.StartEngine();
+                            if (vehicle.GetName() == vehicle_selection)
+                            {
+                                vehicle.StartEngine();
+                                error = 1;
+                                Console.WriteLine("Press enter to go back to the main menu");
+                                Console.ReadLine();
+
+                            }
+
+                            else
+                            {
+                                continue;
+                            }
                         }
 
-                        else
+                        
+                        // If vehicle could not be found
+                        if (error != 1)
                         {
-                            continue;
+                            Console.Write($"Could not find a vehicle name '{vehicle_selection}'");
+                            Console.WriteLine("Press enter to go back to the main menu");
+                            Console.ReadLine();
                         }
+                    break;
                     }
-                break;
+
+                    // Vehicle details
+                    case 6:
+                    Console.Write("What vehicle do you want the details of: ");
+                    vehicle_selection = Console.ReadLine();
+
+                    error = 0;
+                    // finds vehicle, and shows the attributes of the vehicle
+                    foreach (Vehicle vehicle in vehicles)
+                        {
+                            if (vehicle.GetName() == vehicle_selection)
+                            {
+                                Console.WriteLine(vehicle.GetStringRepresentation());
+                                error = 1;
+
+                                Console.Write("Press enter to go back to the main menu");
+                                Console.ReadLine();
+                            }
+
+                            else
+                            {
+                                continue;
+                            }
+                        }
+                        // If vehicle could not be found
+                        if (error != 1)
+                        {
+                            Console.Write($"Could not find a vehicle name '{vehicle_selection}'");
+                            Console.WriteLine("Press enter to go back to the main menu");
+                            Console.ReadLine();
+                        }
+                    break;
                 }
-
-                // vehicle details
-                case 6:
-                VehicleDetails();
-                break;
             }
-        
-    }
+        }
+    }    
 
 
 
@@ -89,7 +152,7 @@ class Program
 
 
 
-        // saves the goals to a user specified file
+        // saves the vehicle list to a user specified file
     static void Save(List<Vehicle> vehicles)
     {
         string fileName;
@@ -114,6 +177,7 @@ class Program
         }
     }
 
+        // loads a vehicle list from a user specified file
     static void Load(List<Vehicle> vehicles)
 {
         string fileName;
@@ -197,14 +261,14 @@ class Program
         }
     }
 
-}
-
+        // new vehicle selection menu
     static void NewVehicle(List<Vehicle> vehicles)
     {
         int selection = -1;
-
-        Console.WriteLine("Please select a new vehicle to create");
+    
+        Console.WriteLine("Please select an option");
         Console.WriteLine("1. Sports Car\n2. Bike\n3. Truck\n4. Electric Sedan\n5. Sedan\n6. SemiTruck\n7. DirtBike");
+        Console.Write("Selection: ");
         selection = int.Parse(Console.ReadLine());
         switch(selection)
         {

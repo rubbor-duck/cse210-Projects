@@ -12,6 +12,7 @@ public class ElectricSedan : Vehicle
         return _batteryHealth;
     }
 
+    // override for the refuel that changes the fuel to battery charge
     public override void ReFuel(double fuel)
     {
         SetFuel(fuel);
@@ -31,7 +32,7 @@ public class ElectricSedan : Vehicle
     public override void EngineStartMessage()
     {
         Console.WriteLine("You hear the quite hum of the fans turn on.");
-        Console.WriteLine($"{GetName} has quitely started, ready to be eco friendly 🤮");
+        Console.WriteLine($"{GetName()} has quitely started, ready to be eco friendly 🤮");
     }
 
     public override void StartEngine()
@@ -43,7 +44,7 @@ public class ElectricSedan : Vehicle
 
     public override string GetStringRepresentation()
     {
-        string stringrep = $"ElectricSedan: {GetName()}:{GetDescription()}:{GetYear()}:{GetCost()}:{GetOdometer()}:{GetFuelCapacity()}:{GetFuel()}:{_batteryHealth}";
+        string stringrep = $"ElectricSedan:{GetName()}:{GetDescription()}:{GetYear()}:{GetCost()}:{GetOdometer()}:{GetFuelCapacity()}:{GetFuel()}:{_batteryHealth}";
 
         return stringrep;
     }

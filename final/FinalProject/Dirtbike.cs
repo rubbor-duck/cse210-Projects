@@ -8,12 +8,12 @@ public class Dirtbike : Vehicle
     public override void EngineStartMessage()
     {
         Console.WriteLine("Reeninininininininine");
-        Console.WriteLine($"{GetName} renenenings on");
+        Console.WriteLine($"{GetName()} renenenings on");
     }
 
     public override string GetStringRepresentation()
     {
-        string stringrep = $"Dirtbike: {GetName()}:{GetDescription()}:{GetYear()}:{GetCost()}:{GetOdometer()}:{GetFuelCapacity()}:{GetFuel()}";
+        string stringrep = $"Dirtbike:{GetName()}:{GetDescription()}:{GetYear()}:{GetCost()}:{GetOdometer()}:{GetFuelCapacity()}:{GetFuel()}";
 
         return stringrep;
     }

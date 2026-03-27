@@ -7,6 +7,7 @@ public class Truck : Vehicle
         _bedCapacity = bedCapacity;
     }
 
+    // gets the bed capacity of the truck
     public int GetBedCapacity()
     {
         return _bedCapacity;
@@ -27,7 +28,7 @@ public class Truck : Vehicle
 
     public override string GetStringRepresentation()
     {
-        string stringrep = $"Truck: {GetName()}:{GetDescription()}:{GetYear()}:{GetCost()}:{GetOdometer()}:{GetFuelCapacity()}:{GetFuel()}:{_bedCapacity}";
+        string stringrep = $"Truck:{GetName()}:{GetDescription()}:{GetYear()}:{GetCost()}:{GetOdometer()}:{GetFuelCapacity()}:{GetFuel()}:{_bedCapacity}";
 
         return stringrep;
     }

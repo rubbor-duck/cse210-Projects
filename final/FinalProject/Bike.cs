@@ -35,7 +35,7 @@ public class Bike : Vehicle
 
     public override string GetStringRepresentation()
     {
-        string stringrep = $"Bike: {GetName()}:{GetDescription()}:{GetYear()}:{GetCost()}:{GetOdometer()}:{GetFuelCapacity()}:{GetFuel()}";
+        string stringrep = $"Bike:{GetName()}:{GetDescription()}:{GetYear()}:{GetCost()}:{GetOdometer()}:{GetFuelCapacity()}:{GetFuel()}";
 
         return stringrep;
     }

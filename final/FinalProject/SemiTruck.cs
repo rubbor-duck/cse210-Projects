@@ -7,6 +7,7 @@ public class SemiTruck : Vehicle
         _trailer = trailer;
     }
 
+    // tells if there is a trailer or not attached to the semi
     public bool GetTrailer()
     {
         return _trailer;
@@ -20,7 +21,7 @@ public class SemiTruck : Vehicle
 
     public override string GetStringRepresentation()
     {
-        string stringrep = $"SemiTruck: {GetName()}:{GetDescription()}:{GetYear()}:{GetCost()}:{GetOdometer()}:{GetFuelCapacity()}:{GetFuel()}:{_trailer}";
+        string stringrep = $"SemiTruck:{GetName()}:{GetDescription()}:{GetYear()}:{GetCost()}:{GetOdometer()}:{GetFuelCapacity()}:{GetFuel()}:{_trailer}";
 
         return stringrep;
     }
