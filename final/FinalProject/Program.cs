@@ -116,31 +116,68 @@ class Program
                     vehicle_selection = Console.ReadLine();
 
                     error = 0;
+
                     // finds vehicle, and shows the attributes of the vehicle
                     foreach (Vehicle vehicle in vehicles)
                         {
-                            if (vehicle.GetName() == vehicle_selection)
-                            {
-                                Console.WriteLine(vehicle.GetStringRepresentation());
-                                error = 1;
+                            if (vehicle.GetName() == vehicle_selection) {
+                            string line = vehicle.GetStringRepresentation();
+                            string[] parts = null;
 
+                                // splits the string by ":"
+                                parts = line.Split(":");
+                                
+                                
+                                // line split up into its different values
+                                string vehicletype = parts[0];
+                                string name = parts[1];
+                                string description = parts[2];
+                                string year = parts[3];
+                                double cost = double.Parse(parts[4]);
+                                int odometer = int.Parse(parts[5]);
+                                double fuelCapacity = double.Parse(parts[6]);
+                                double fuelRemaning = double.Parse(parts[7]);
+
+                                Console.WriteLine($"Name: {name}\nDescription: {description}\nYear: {year}\nCost: {cost}\nOdometer Reading: {odometer}\nTank Capacity: {fuelCapacity}\nFuel Remaining: {fuelRemaning}");
+
+                                // 1. Sports Car\n2. Bike\n3. Truck\n4. Electric Sedan\n5. Sedan\n6. SemiTruck\n7. DirtBike
+                                // checks the goal type, then loads the attributes into a new goal that gets added to the overarching goal list
+
+                                if (vehicletype == "Truck")
+                                {
+                                    int bedCapacity = int.Parse(parts[8]);
+                                    Console.WriteLine($"Bed Capacity: {bedCapacity}");
+                                }
+
+                                else if (vehicletype == "ElectricSedan")
+                                {
+                                    int batteryHealth = int.Parse(parts[8]);
+                                    Console.WriteLine($"Battery Health: {batteryHealth}");
+                                }
+
+                                else if (vehicletype == "SemiTruck")
+                                {
+                                    bool trailer = bool.Parse(parts[8]);
+                                    Console.WriteLine($"Has a Trailer: {trailer}");
+                                }
+
+                                error = 1;
                                 Console.Write("Press enter to go back to the main menu");
                                 Console.ReadLine();
                             }
 
-                            else
-                            {
+                            else {
                                 continue;
                             }
-                        }
-                        // If vehicle could not be found
-                        if (error != 1)
-                        {
-                            Console.Write($"Could not find a vehicle name '{vehicle_selection}'");
-                            Console.WriteLine("Press enter to go back to the main menu");
-                            Console.ReadLine();
-                        }
-                    break;
+                        }    
+                                // If vehicle could not be found
+                                if (error != 1)
+                                {
+                                    Console.WriteLine($"Could not find a vehicle name '{vehicle_selection}'");
+                                    Console.Write("Press enter to go back to the main menu");
+                                    Console.ReadLine();
+                                }
+                            break;
                 }
             }
         }
